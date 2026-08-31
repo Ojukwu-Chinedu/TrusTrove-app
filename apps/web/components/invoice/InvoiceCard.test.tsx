@@ -4,7 +4,6 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { InvoiceCard } from "./InvoiceCard";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-// Mock the hooks
 vi.mock("@/store/wallet", () => ({
   useWalletStore: vi.fn(() => ({
     address: "GACR43ILX6H4PGAOO5QKSZLU4ZJMGT3E66EAUDPLM5J6YTP4Y3PSHWGB",
