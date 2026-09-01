@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { formatAmount } from "@/lib/assets";
 import { truncateAddress } from "@/lib/format";
+import { validateDiscountBps } from "@/lib/validation";
 import { useConfirmDialogStore } from "@/store/confirmDialog";
 
 interface InvoiceCardProps {
@@ -72,7 +73,7 @@ export const InvoiceCard = React.memo(function InvoiceCard({
     setError(null);
     try {
       const bps = parseInt(discountBpsInput, 10);
-      if (isNaN(bps) || bps <= 0 || bps > 10000) {
+      if (!validateDiscountBps(bps)) {
         throw new Error(
           "Discount basis points must be between 1 and 10,000 (100%)",
         );
