@@ -21,6 +21,7 @@ import {
   Clock,
 } from "lucide-react";
 import { formatAmount } from "@/lib/assets";
+import { truncateAddress } from "@/lib/format";
 import { useConfirmDialogStore } from "@/store/confirmDialog";
 
 interface InvoiceCardProps {
@@ -54,11 +55,6 @@ export const InvoiceCard = React.memo(function InvoiceCard({
   const [discountBpsInput, setDiscountBpsInput] = useState("200"); // default 2%
   const [showListForm, setShowListForm] = useState(false);
   const discountBpsId = useId();
-
-  const truncateAddr = (addr: string) => {
-    if (!addr) return "";
-    return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
-  };
 
   const copyToClipboard = async (text: string, type: "id" | "buyer") => {
     await navigator.clipboard.writeText(text);
@@ -133,7 +129,7 @@ export const InvoiceCard = React.memo(function InvoiceCard({
         <div className="space-y-1">
           <div className="flex items-center gap-1.5">
             <span className="text-[10px] font-mono text-slate-500 font-bold">
-              INV#{truncateAddr(invoice.id)}
+              INV#{truncateAddress(invoice.id)}
             </span>
             <button
               onClick={(e) => {
@@ -189,7 +185,7 @@ export const InvoiceCard = React.memo(function InvoiceCard({
           <span className="text-slate-500">Buyer Address:</span>
           <div className="flex items-center gap-1">
             <span className="text-slate-300" title={invoice.buyer}>
-              {truncateAddr(invoice.buyer)}
+              {truncateAddress(invoice.buyer)}
             </span>
             <button
               onClick={(e) => {
