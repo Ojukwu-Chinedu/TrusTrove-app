@@ -15,14 +15,10 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { truncateAddress } from "@/lib/format";
+import { getErrorMessage } from "@/lib/errors";
 
 interface FreighterNetworkApi {
   setNetwork?: (network: string) => Promise<unknown>;
-}
-
-function getErrorMessage(error: unknown) {
-  if (error instanceof Error) return error.message;
-  return "Freighter could not switch networks";
 }
 
 export function WalletConnect() {
