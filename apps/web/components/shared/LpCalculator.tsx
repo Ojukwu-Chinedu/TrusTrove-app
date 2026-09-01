@@ -82,7 +82,8 @@ export function LpCalculator() {
           <div className="flex justify-between text-xs font-mono">
             <span className="text-slate-400">Avg Invoice Discount Bps</span>
             <span className="text-primary font-bold">
-              {lpAvgDiscount.toFixed(1)}% ({Math.round(lpAvgDiscount * 100)} bps)
+              {lpAvgDiscount.toFixed(1)}% ({Math.round(lpAvgDiscount * 100)}{" "}
+              bps)
             </span>
           </div>
           <input
@@ -109,9 +110,7 @@ export function LpCalculator() {
         <div className="space-y-2">
           <div className="flex justify-between text-xs font-mono">
             <span className="text-slate-400">Avg Days to Maturity</span>
-            <span className="text-primary font-bold">
-              {lpAvgMaturity} Days
-            </span>
+            <span className="text-primary font-bold">{lpAvgMaturity} Days</span>
           </div>
           <input
             id="discount-lp-avg-maturity"
