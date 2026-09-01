@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { formatAmount } from "@/lib/assets";
 import { useConfirmDialogStore } from "@/store/confirmDialog";
+import { truncateAddress } from "@/lib/format";
 
 interface InvoiceDetailClientProps {
   invoiceId: string;
@@ -205,7 +206,7 @@ export default function InvoiceDetailClient({
           </Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-700" />
           <span className="text-slate-400">
-            Invoice #{invoice.id.slice(0, 6)}...
+            Invoice #{truncateAddress(invoice.id)}
           </span>
         </div>
 
